@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Meu Portfólio Pessoal 🚀
 
-## Getting Started
+Este é o meu portfólio pessoal, construído para demonstrar minhas habilidades, projetos, trajetória acadêmica e certificações na área de Tecnologia da Informação. O design possui uma estética **Minimalista Premium**, com foco em clean design (preto e branco), espaçamento e micro-interações elegantes.
 
-First, run the development server:
+## 🛠️ Tecnologias Utilizadas
 
+O projeto foi desenvolvido utilizando as seguintes ferramentas modernas do ecossistema front-end:
+
+- **[React](https://reactjs.org/) & [Next.js](https://nextjs.org/)** - (App Router)
+- **[TypeScript](https://www.typescriptlang.org/)** - Tipagem estática
+- **[Tailwind CSS](https://tailwindcss.com/)** - Estilização utilitária
+- **[Framer Motion](https://www.framer.com/motion/)** - Animações e transições fluidas
+- **[Lucide React](https://lucide.dev/)** - Ícones
+- **Integração com a API do GitHub** - Para exibição do perfil e projetos dinamicamente
+
+## 🌟 Funcionalidades
+
+- **Responsividade total:** Funciona perfeitamente em dispositivos móveis, tablets e desktops.
+- **Animações fluidas:** Efeitos de hover sofisticados e transições macias via Framer Motion.
+- **Integração Dinâmica com GitHub:** Puxa meus repositórios mais recentes e informações do meu perfil em tempo real.
+- **Sistema de Filtro:** Para galerias de Projetos e Certificações.
+- **Performance Optimizada:** Utilizando os melhores recursos de otimização de imagem e fontes do Next.js.
+
+## 🚀 Como rodar localmente
+
+Siga os passos abaixo para rodar o projeto na sua máquina:
+
+1. **Clone o repositório:**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/Graco2005/nome-do-repositorio.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Acesse a pasta do projeto:**
+```bash
+cd nome-do-repositorio
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. **Instale as dependências:**
+```bash
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. **Inicie o servidor de desenvolvimento:**
+```bash
+npm run dev
+```
 
-## Learn More
+5. Abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver o resultado!
 
-To learn more about Next.js, take a look at the following resources:
+## 📝 Como personalizar os dados
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Os dados do site estão estruturados diretamente nos componentes para facilitar a manutenção. Se você quiser usar este portfólio como base:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Projetos:** Edite a variável `projectsData` no arquivo `src/components/projects.tsx`.
+- **Certificações:** Edite a variável `certificates` no arquivo `src/components/certifications.tsx`.
+- **Linha do Tempo:** Edite a variável `timelineData` no arquivo `src/components/timeline.tsx`.
+- **Currículo:** Substitua o arquivo `curriculo.pdf` dentro da pasta `public/`.
+- **Github:** No arquivo `src/components/github.tsx`, procure por `Graco2005` e substitua pelo seu nome de usuário.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+Desenvolvido com 🤍 por Graco.
