@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo - LUIS GRACO CAPISTRANO NETO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-main: #111111;
+            --text-muted: #555555;
+            --text-light: #888888;
+            --border-color: #e5e5e5;
+            --accent-color: #000000;
+            --font-main: 'Inter', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #f4f4f5;
+            font-family: var(--font-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            padding: 2rem;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            color: var(--text-main);
+            text-decoration: none;
+            border-bottom: 1px solid var(--border-color);
+            transition: border-color 0.2s ease;
+        }
+
+        a:hover {
+            border-bottom-color: var(--accent-color);
+        }
+
+        /* Configuração de Página A4 */
+        .page {
+            background-color: var(--bg-color);
+            width: 210mm;
+            min-height: 297mm;
+            padding: 16mm 20mm;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 5mm;
+        }
+
+        /* Detalhe visual elegante no topo */
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: var(--accent-color);
+        }
+
+        /* Tipografia */
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        /* Cabeçalho */
+        .header {
+            margin-bottom: 2mm;
+        }
+
+        .name {
+            font-size: 26pt;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+            margin-bottom: 4px;
+        }
+
+        .role {
+            font-size: 11pt;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .summary {
+            font-size: 9.5pt;
+            color: var(--text-muted);
+            text-align: justify;
+            font-weight: 400;
+        }
+
+        /* Contato */
+        .contact-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 20px;
+            font-size: 9pt;
+            padding-bottom: 5mm;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-muted);
+        }
+
+        .contact-item strong {
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        /* Títulos de Seção */
+        .section-title {
+            font-size: 10.5pt;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4mm;
+            padding-bottom: 4px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Indicador geométrico minimalista */
+        .section-title::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 12px;
+            background-color: var(--accent-color);
+        }
+
+        /* Itens de Experiência, Educação, Projetos */
+        .item {
+            margin-bottom: 4mm;
+        }
+        
+        .item:last-child {
+            margin-bottom: 0;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 2px;
+        }
+
+        .item-title {
+            font-size: 10.5pt;
+            font-weight: 600;
+        }
+
+        .item-meta {
+            font-size: 9pt;
+            color: var(--text-light);
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .item-subtitle {
+            font-size: 9.5pt;
+            font-weight: 500;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .item-desc {
+            font-size: 9.5pt;
+            color: var(--text-muted);
+        }
+
+        .item-desc ul {
+            padding-left: 16px;
+            margin-top: 4px;
+        }
+
+        .item-desc li {
+            margin-bottom: 2px;
+        }
+
+        .item-tech {
+            margin-top: 4px;
+            font-size: 8.5pt;
+            color: var(--text-muted);
+        }
+
+        .item-tech span {
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .item-links {
+            margin-top: 2px;
+            font-size: 8.5pt;
+        }
+
+        .item-links a {
+            font-weight: 500;
+            margin-right: 12px;
+        }
+
+        /* Grid de Habilidades Técnicas */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4mm;
+        }
+
+        .skill-group {
+            font-size: 9.5pt;
+        }
+
+        .skill-group-name {
+            font-weight: 600;
+            color: var(--text-main);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .skill-group-items {
+            color: var(--text-muted);
+        }
+
+        /* Colunas para seções menores (Idiomas e Soft Skills) */
+        .two-cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6mm;
+        }
+
+        .language-item {
+            font-size: 9.5pt;
+            margin-bottom: 2px;
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 2px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .language-item:last-child {
+            border-bottom: none;
+        }
+
+        .language-name {
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .language-level {
+            color: var(--text-muted);
+        }
+
+        .soft-skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            font-size: 9pt;
+        }
+
+        .soft-skills-list span {
+            background-color: #fafafa;
+            border: 1px solid var(--border-color);
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: var(--text-muted);
+        }
+
+        /* Configurações exclusivas para Impressão / PDF */
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+            .page {
+                box-shadow: none;
+                width: 210mm;
+                height: 297mm;
+                padding: 12mm 15mm;
+            }
+            .page::before {
+                display: none;
+            }
+            a {
+                border-bottom: none;
+            }
+            @page {
+                size: A4;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        
+        <!-- Cabeçalho -->
+        <header class="header">
+            <h1 class="name">LUIS GRACO CAPISTRANO NETO</h1>
+            <div class="role">Estudante de Ciência da Computação | Desenvolvedor em Formação</div>
+            <p class="summary">Estudante de Ciência da Computação do 4º semestre com forte interesse em desenvolvimento de software, engenharia backend e tecnologias relacionadas à inteligência artificial. Focado na criação de soluções eficientes e arquiteturas limpas. Busco oportunidades para aplicar meus conhecimentos em projetos reais, gerar impacto positivo e continuar aprimorando minhas habilidades técnicas.</p>
+        </header>
+
+        <!-- Contato -->
+        <section class="contact-bar">
+            <div class="contact-item"><strong>E-mail:</strong> luisgraconeto@gmail.com</div>
+            <div class="contact-item"><strong>Telefone:</strong> (85) 98591-0993</div>
+            <div class="contact-item"><strong>Localização:</strong> Fortaleza-CE</div>
+            <div class="contact-item"><strong>LinkedIn:</strong> <a href="#">linkedin.com/in/luis-capistrano</a></div>
+            <div class="contact-item"><strong>GitHub:</strong> <a href="#">github.com/Graco2005</a></div>
+            <div class="contact-item"><strong>Portfólio:</strong> <a href="#">[seuportfolio.com]</a></div>
+        </section>
+
+        <!-- Habilidades Técnicas -->
+        <section class="section">
+            <h2 class="section-title">Habilidades Técnicas</h2>
+            <div class="skills-grid">
+                <div class="skill-group">
+                    <span class="skill-group-name">Linguagens</span>
+                    <span class="skill-group-items">Python, JavaScript, SQL, [Outra]</span>
+                </div>
+                <div class="skill-group">
+                    <span class="skill-group-name">Desenvolvimento Web</span>
+                    <span class="skill-group-items">HTML, CSS, React, Node.js, [Outra]</span>
+                </div>
+                <div class="skill-group">
+                    <span class="skill-group-name">Banco de Dados</span>
+                    <span class="skill-group-items">MySQL, PostgreSQL, MongoDB</span>
+                </div>
+                <div class="skill-group">
+                    <span class="skill-group-name">Ferramentas & Outros</span>
+                    <span class="skill-group-items">Git, GitHub, VS Code, APIs REST, Docker</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projetos -->
+        <section class="section">
+            <h2 class="section-title">Projetos em Destaque</h2>
+            
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">Chatbot de Atendimento</div>
+                </div>
+                <div class="item-desc">
+                    Assistente virtual integrado com OpenAI para responder dúvidas frequentes de clientes
+                </div>
+                <div class="item-tech">
+                    <span>Tecnologias:</span> Python, LongChain, OpenAI
+                </div>
+                <div class="item-links">
+                    <a href="#">GitHub ↗</a>
+                    <a href="#">Live Demo ↗</a>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">[Nome do Segundo Projeto]</div>
+                </div>
+                <div class="item-desc">
+                    [Descrição concisa sobre a arquitetura do projeto, os desafios técnicos superados e o resultado final da aplicação.]
+                </div>
+                <div class="item-tech">
+                    <span>Tecnologias:</span> JavaScript, HTML, CSS, API REST
+                </div>
+                <div class="item-links">
+                    <a href="#">GitHub ↗</a>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Formação Acadêmica -->
+        <section class="section">
+            <h2 class="section-title">Formação Acadêmica</h2>
+            
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">Bacharelado em Ciência da Computação</div>
+                    <div class="item-meta">2025.1 – 2028.2</div>
+                </div>
+                <div class="item-subtitle">Universidade de Fortaleza - UNIFOR</div>
+            </div>
+        </section>
+
+        <!-- Cursos e Certificações -->
+        <section class="section">
+            <h2 class="section-title">Cursos e Certificações</h2>
+            
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">[Nome do Curso Relevante]</div>
+                    <div class="item-meta">[Ano]</div>
+                </div>
+                <div class="item-desc">[Instituição] · [Carga horária]h</div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">[Bootcamp ou Certificação Importante]</div>
+                    <div class="item-meta">[Ano]</div>
+                </div>
+                <div class="item-desc">[Instituição] · [Carga horária]h</div>
+            </div>
+        </section>
+
+        <!-- Seções Menores: Idiomas e Soft Skills -->
+        <div class="two-cols">
+            <section class="section">
+                <h2 class="section-title">Idiomas</h2>
+                <div class="language-item">
+                    <span class="language-name">Português</span>
+                    <span class="language-level">Nativo</span>
+                </div>
+                <div class="language-item">
+                    <span class="language-name">Inglês</span>
+                    <span class="language-level">[Avançado / Intermediário]</span>
+                </div>
+                <div class="language-item">
+                    <span class="language-name">Espanhol</span>
+                    <span class="language-level">[Básico]</span>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Habilidades Pessoais</h2>
+                <div class="soft-skills-list">
+                    <span>Resolução de problemas</span>
+                    <span>Pensamento lógico</span>
+                    <span>Aprendizado contínuo</span>
+                    <span>Trabalho em equipe</span>
+                    <span>Comunicação clara</span>
+                    <span>Proatividade</span>
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -60,7 +60,7 @@ export function Contact() {
                 </div>
                 <div>
                   <div className="text-sm font-semibold text-foreground/50 tracking-wide uppercase">Email</div>
-                  <a href="mailto:seu.email@exemplo.com" className="text-foreground font-medium hover:underline">seu.email@exemplo.com</a>
+                  <a href="mailto:seu.email@exemplo.com" className="text-foreground font-medium hover:underline">luisgraconeto@gmail.com</a>
                 </div>
               </div>
               <div className="flex items-center gap-4 group">
@@ -69,7 +69,7 @@ export function Contact() {
                 </div>
                 <div>
                   <div className="text-sm font-semibold text-foreground/50 tracking-wide uppercase">Localização</div>
-                  <span className="text-foreground font-medium">São Paulo, Brasil</span>
+                  <span className="text-foreground font-medium">Fortaleza, Ceará</span>
                 </div>
               </div>
             </div>

@@ -27,12 +27,12 @@ Siga os passos abaixo para rodar o projeto na sua máquina:
 
 1. **Clone o repositório:**
 ```bash
-git clone https://github.com/Graco2005/nome-do-repositorio.git
+git clone https://github.com/Graco2005/portfolio-luis-graco.git
 ```
 
 2. **Acesse a pasta do projeto:**
 ```bash
-cd nome-do-repositorio
+cd portfolio-luis-graco
 ```
 
 3. **Instale as dependências:**
@@ -58,4 +58,3 @@ Os dados do site estão estruturados diretamente nos componentes para facilitar 
 - **Github:** No arquivo `src/components/github.tsx`, procure por `Graco2005` e substitua pelo seu nome de usuário.
 
 ---
-Desenvolvido com 🤍 por Graco.

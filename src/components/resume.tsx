@@ -40,7 +40,7 @@ export function Resume() {
               </p>
               
               <Link 
-                href="/curriculo.pdf"
+                href="/index.html"
                 target="_blank"
                 className="inline-flex items-center gap-3 px-8 py-4 bg-foreground text-background font-medium rounded-full hover:bg-foreground/90 transition-all duration-300 shadow-[0_4px_14px_0_rgb(0,0,0,0.1)] transform hover:-translate-y-1"
               >

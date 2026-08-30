@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Download, Mail } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import Link from "next/link";
+import Image from 'next/image';
 
 export function Hero() {
   return (
@@ -80,14 +81,15 @@ export function Hero() {
                 <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
               </Link>
               
-              <Link 
-                href="/curriculo.pdf"
-                target="_blank"
-                className="flex items-center gap-2 px-7 py-3.5 bg-white text-foreground font-medium rounded-full border border-black/10 hover:border-black/30 hover:bg-black/5 transition-all duration-300 transform hover:-translate-y-1"
+              {/* Em .html temporariamente enquanto eu vou concluindo o meu currículo */}
+              <a 
+                href="/index.html" 
+                download="index.html"
+                className="flex items-center gap-2 px-7 py-3.5 bg-white text-foreground font-medium rounded-full border border-black/10 hover:border-black/30 hover:bg-black/5 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
               >
                 Baixar Currículo
                 <Download size={18} />
-              </Link>
+              </a>
             </motion.div>
           </motion.div>
           
@@ -101,11 +103,19 @@ export function Hero() {
             <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 group">
               <div className="absolute inset-0 bg-black/5 rounded-[2rem] md:rounded-[3rem] rotate-6 transition-transform duration-500 group-hover:rotate-12" />
               <div className="absolute inset-0 bg-black/10 rounded-[2rem] md:rounded-[3rem] rotate-3 transition-transform duration-500 group-hover:rotate-6" />
+              
               <div className="absolute inset-0 bg-white rounded-[2rem] md:rounded-[3rem] overflow-hidden flex items-center justify-center border border-black/10 shadow-xl transition-transform duration-500 group-hover:-translate-y-2">
-                <div className="text-foreground/30 flex flex-col items-center">
-                  <span className="text-6xl mb-2 grayscale opacity-80">🧑‍💻</span>
-                  <span className="text-sm font-medium tracking-wide">FOTO AQUI</span>
-                </div>
+                
+                {/* === FOTO DE PERFIL ADICIONADA === */}
+                <Image 
+                  src="/perfil.png" // CERTIFIQUE-SE DE QUE O NOME DO ARQUIVO É O MESMO NA PASTA PUBLIC
+                  alt="Foto de perfil de Graco"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 16rem, (max-width: 1024px) 20rem, 24rem"
+                  priority
+                />
+
               </div>
             </div>
           </motion.div>
