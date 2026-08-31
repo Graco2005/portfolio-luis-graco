@@ -1,6 +1,5 @@
 "use client";
 
-import { Heart } from "lucide-react";
 import Link from "next/link";
 
 export function Footer() {
@@ -18,19 +17,11 @@ export function Footer() {
           </div>
 
           <p className="text-sm text-foreground/60 flex items-center gap-1 font-light">
-            Desenvolvido com <Heart size={14} className="text-foreground fill-current mx-1" /> por Graco © {currentYear}
+            Desenvolvido por Graco © {currentYear}
           </p>
 
-          <div className="flex gap-6 text-sm font-medium">
-            <Link href="#about" className="text-foreground/60 hover:text-foreground transition-colors">
-              Sobre
-            </Link>
-            <Link href="#projects" className="text-foreground/60 hover:text-foreground transition-colors">
-              Projetos
-            </Link>
-            <Link href="#contact" className="text-foreground/60 hover:text-foreground transition-colors">
-              Contato
-            </Link>
+          <div className="text-sm font-medium text-foreground/40 font-mono">
+            v1.6.0
           </div>
 
         </div>

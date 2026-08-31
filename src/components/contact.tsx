@@ -9,16 +9,45 @@ export function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
+    setErrorMessage("");
     
-    // Simulate API call
-    setTimeout(() => {
-      setStatus("success");
-      setFormData({ name: "", email: "", message: "" });
-      setTimeout(() => setStatus("idle"), 3000);
-    }, 1500);
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "2a5b2857-9ac7-4dd2-bbf3-34b716134206",
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: `Nova mensagem de ${formData.name} pelo Portfólio`,
+          from_name: formData.name,
+        }),
+      });
+      
+      const result = await response.json();
+      if (result.success) {
+        setStatus("success");
+        setFormData({ name: "", email: "", message: "" });
+        setTimeout(() => setStatus("idle"), 5000);
+      } else {
+        setStatus("error");
+        setErrorMessage(result.message || "Ocorreu um erro ao enviar. Tente novamente.");
+        setTimeout(() => setStatus("idle"), 5000);
+      }
+    } catch (error) {
+      setStatus("error");
+      setErrorMessage("Erro de conexão. Verifique sua internet e tente novamente.");
+      setTimeout(() => setStatus("idle"), 5000);
+    }
   };
 
   return (
@@ -60,7 +89,7 @@ export function Contact() {
                 </div>
                 <div>
                   <div className="text-sm font-semibold text-foreground/50 tracking-wide uppercase">Email</div>
-                  <a href="mailto:seu.email@exemplo.com" className="text-foreground font-medium hover:underline">luisgraconeto@gmail.com</a>
+                  <a href="mailto:luisgraconeto@gmail.com" className="text-foreground font-medium hover:underline">luisgraconeto@gmail.com</a>
                 </div>
               </div>
               <div className="flex items-center gap-4 group">
@@ -77,10 +106,10 @@ export function Contact() {
             <div>
               <div className="text-sm font-semibold text-foreground/50 tracking-wide uppercase mb-4">Redes Sociais</div>
               <div className="flex gap-4">
-                <a href="#" className="w-12 h-12 rounded-full bg-white border border-black/5 flex items-center justify-center text-foreground hover:bg-foreground hover:text-background transition-colors duration-300">
+                <a href="https://github.com/Graco2005" className="w-12 h-12 rounded-full bg-white border border-black/5 flex items-center justify-center text-foreground hover:bg-foreground hover:text-background transition-colors duration-300">
                   <Github size={20} />
                 </a>
-                <a href="#" className="w-12 h-12 rounded-full bg-white border border-black/5 flex items-center justify-center text-foreground hover:bg-foreground hover:text-background transition-colors duration-300">
+                <a href="https://www.linkedin.com/in/luis-capistrano-12a508366/" className="w-12 h-12 rounded-full bg-white border border-black/5 flex items-center justify-center text-foreground hover:bg-foreground hover:text-background transition-colors duration-300">
                   <Linkedin size={20} />
                 </a>
               </div>
@@ -135,22 +164,38 @@ export function Contact() {
                 />
               </div>
 
-              <button 
-                type="submit"
-                disabled={status === "loading"}
-                className="w-full md:w-auto px-8 py-4 bg-foreground text-background font-medium rounded-xl hover:bg-foreground/90 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 group shadow-[0_4px_14px_0_rgb(0,0,0,0.1)]"
-              >
-                {status === "loading" ? (
-                  <div className="w-5 h-5 border-2 border-background/20 border-t-background rounded-full animate-spin" />
-                ) : status === "success" ? (
-                  "Mensagem Enviada!"
-                ) : (
-                  <>
-                    Enviar Mensagem
-                    <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                  </>
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                <button 
+                  type="submit"
+                  disabled={status === "loading"}
+                  className={`w-full md:w-auto px-8 py-4 font-medium rounded-xl transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 group shadow-[0_4px_14px_0_rgb(0,0,0,0.1)] ${
+                    status === "success" 
+                      ? "bg-green-600 text-white" 
+                      : status === "error" 
+                      ? "bg-red-600 text-white" 
+                      : "bg-foreground text-background hover:bg-foreground/90"
+                  }`}
+                >
+                  {status === "loading" ? (
+                    <div className="w-5 h-5 border-2 border-background/20 border-t-background rounded-full animate-spin" />
+                  ) : status === "success" ? (
+                    "Mensagem Enviada com Sucesso!"
+                  ) : status === "error" ? (
+                    "Erro ao Enviar"
+                  ) : (
+                    <>
+                      Enviar Mensagem
+                      <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    </>
+                  )}
+                </button>
+
+                {status === "error" && errorMessage && (
+                  <p className="text-sm text-red-500 font-medium">
+                    {errorMessage}
+                  </p>
                 )}
-              </button>
+              </div>
             </form>
           </motion.div>
         </div>
