@@ -62,6 +62,16 @@ const projectsData = [
     techs: ["React", "Recharts", "TypeScript"],
     github: "#",
     live: "#"
+  },
+  {
+    id: 7,
+    title: "Acessa",
+    category: "Mobile",
+    description: "Aplicativo mobile de acessibilidade com tela mapa, avaliação, pontos de interesse, notificação e perfil de usuário.",
+    techs: ["React Native", "Expo", "Firebase"],
+    github: "https://github.com/Graco2005/acessa-app-acessibilidade",
+    live: "#",
+    image: "acessa.png"
   }
 ];
 
@@ -75,7 +85,7 @@ export function Projects() {
   return (
     <section id="projects" className="py-24 relative bg-card">
       <div className="container mx-auto px-4 md:px-6">
-        
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -93,11 +103,10 @@ export function Projects() {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                activeCategory === cat
+              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeCategory === cat
                   ? "bg-foreground text-background shadow-md"
                   : "bg-white text-foreground/70 border border-black/5 hover:border-black/20 hover:text-foreground"
-              }`}
+                }`}
             >
               {cat}
             </button>
@@ -120,9 +129,17 @@ export function Projects() {
                 {/* Image Placeholder */}
                 <div className="h-56 relative bg-card flex items-center justify-center overflow-hidden border-b border-black/5">
                   <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500 z-10" />
-                  <div className="text-foreground/20 font-semibold tracking-widest text-xs z-0 transition-transform duration-700 group-hover:scale-110">
-                    IMAGEM DO PROJETO
-                  </div>
+                  {project.image ? (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover z-0 transition-transform duration-700 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="text-foreground/20 font-semibold tracking-widest text-xs z-0 transition-transform duration-700 group-hover:scale-110">
+                      IMAGEM DO PROJETO
+                    </div>
+                  )}
                 </div>
 
                 <div className="p-8 flex flex-col flex-1">
@@ -132,7 +149,7 @@ export function Projects() {
                   <p className="text-sm text-foreground/60 mb-6 flex-1 leading-relaxed font-light">
                     {project.description}
                   </p>
-                  
+
                   <div className="flex flex-wrap gap-2 mb-8">
                     {project.techs.map(tech => (
                       <span key={tech} className="text-[11px] font-semibold px-2.5 py-1 bg-card rounded-md border border-black/5 text-foreground/70">
@@ -142,15 +159,15 @@ export function Projects() {
                   </div>
 
                   <div className="flex items-center gap-4 mt-auto pt-4 border-t border-black/5">
-                    <Link 
-                      href={project.github} 
+                    <Link
+                      href={project.github}
                       className="text-foreground/60 hover:text-foreground transition-colors p-2 -ml-2 rounded-full hover:bg-black/5"
                       aria-label="Código Fonte"
                     >
                       <Github size={20} />
                     </Link>
-                    <Link 
-                      href={project.live} 
+                    <Link
+                      href={project.live}
                       className="text-foreground/60 hover:text-foreground transition-colors p-2 rounded-full hover:bg-black/5"
                       aria-label="Projeto Online"
                     >
