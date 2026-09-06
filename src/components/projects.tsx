@@ -72,6 +72,16 @@ const projectsData = [
     github: "https://github.com/Graco2005/acessa-app-acessibilidade",
     live: "#",
     image: "acessa.png"
+  },
+  {
+    id: 8,
+    title: "Charge",
+    category: "Frontend",
+    description: "Web app client-side para registro e monitoramento de cargas de treino, focado em arquitetura enxuta, alta performance e sem autenticação.",
+    techs: ["Html", "Css", "JavaScript"],
+    github: "https://github.com/Graco2005/app-charge",
+    live: "https://graco2005.github.io/app-charge/",
+    image: "charge_icon.png"
   }
 ];
 
