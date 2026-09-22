@@ -23,16 +23,7 @@ export function Hero() {
               visible: { transition: { staggerChildren: 0.15 } }
             }}
           >
-            <motion.div 
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-              }}
-              className="inline-block px-4 py-1.5 rounded-full border border-black/10 bg-black/5 text-foreground/70 text-sm font-medium"
-            >
-              Bem-vindo ao meu portfólio
-            </motion.div>
-            
+             
             <motion.h1 
               variants={{
                 hidden: { opacity: 0, y: 20 },

@@ -21,7 +21,7 @@ export function Footer() {
           </p>
 
           <div className="text-sm font-medium text-foreground/40 font-mono">
-            v1.6.0
+            v1.7.0
           </div>
 
         </div>

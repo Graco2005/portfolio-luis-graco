@@ -6,11 +6,11 @@ import { FolderGit2, Award, Clock, Code } from "lucide-react";
 import { Github } from "@/components/icons";
 
 const statsData = [
-  { label: "Projetos", value: 25, icon: <FolderGit2 className="text-foreground w-6 h-6" />, suffix: "+" },
-  { label: "Certificados", value: 12, icon: <Award className="text-foreground w-6 h-6" />, suffix: "" },
-  { label: "Horas de Estudo", value: 1500, icon: <Clock className="text-foreground w-6 h-6" />, suffix: "+" },
+  { label: "Projetos", value: 12, icon: <FolderGit2 className="text-foreground w-6 h-6" />, suffix: "+" },
+  { label: "Certificados", value: 10, icon: <Award className="text-foreground w-6 h-6" />, suffix: "" },
+  { label: "Horas de Estudo", value: 500, icon: <Clock className="text-foreground w-6 h-6" />, suffix: "+" },
   { label: "Tecnologias", value: 15, icon: <Code className="text-foreground w-6 h-6" />, suffix: "+" },
-  { label: "Contribuições", value: 450, icon: <Github className="text-foreground w-6 h-6" />, suffix: "+" },
+  { label: "Contribuições", value: 120, icon: <Github className="text-foreground w-6 h-6" />, suffix: "+" },
 ];
 
 function Counter({ from, to, duration = 2 }: { from: number; to: number; duration?: number }) {

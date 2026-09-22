@@ -1,83 +1,98 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Code2, LayoutTemplate, Server, Smartphone, Database, Wrench, Star } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Star, Wrench, ChevronDown, MonitorSmartphone, Server, Database } from "lucide-react";
+import { 
+  FaPython, 
+  FaJava, 
+  FaReact, 
+  FaNodeJs,
+  FaHtml5,
+  FaCss3Alt,
+  FaGitAlt,
+  FaGithub
+} from "react-icons/fa";
+import { 
+  SiJavascript, 
+  SiNextdotjs,
+  SiSpringboot,
+  SiMysql,
+  SiFirebase,
+  SiTypescript
+} from "react-icons/si";
+import { BiCoinStack } from "react-icons/bi";
 
 type TechItem = {
+  id: string;
   name: string;
   icon: any;
   projects?: string;
-  isMain?: boolean;
+  description?: string;
 };
 
-type TechCategory = {
-  title: string;
-  items: TechItem[];
-};
-
-const techCategories: TechCategory[] = [
-  {
-    title: "Linguagens",
-    items: [
-      { name: "Python", icon: Code2, projects: "Chatbot de Atendimento · Automação", isMain: true },
-      { name: "JavaScript", icon: Code2, projects: "E-Commerce · Dashboard", isMain: true },
-      { name: "Java", icon: Code2, projects: "Sistema de Reservas", isMain: true },
-      { name: "SQL", icon: Database, projects: "Consultas · Migrações", isMain: true },
-    ]
+// As principais tecnologias ganham destaque e descrição
+const mainTechs: TechItem[] = [
+  { 
+    id: "java",
+    name: "Java", 
+    icon: FaJava, 
+    projects: "Sistema de Reservas, Motor Kraken", 
+    description: "Linguagem robusta orientada a objetos. Utilizo para construir backends escaláveis, microsserviços e aplicações multithread de alta performance." 
   },
-  {
-    title: "Frontend",
-    items: [
-      { name: "React", icon: LayoutTemplate, projects: "E-Commerce · Dashboard", isMain: true },
-      { name: "Next.js", icon: LayoutTemplate, projects: "E-Commerce" },
-      { name: "HTML", icon: LayoutTemplate },
-      { name: "CSS", icon: LayoutTemplate },
-    ]
+  { 
+    id: "python",
+    name: "Python", 
+    icon: FaPython, 
+    projects: "Chatbot de Atendimento, Automações", 
+    description: "Minha escolha principal para scripts rápidos, análise de dados e integrações com Inteligência Artificial e LLMs." 
   },
-  {
-    title: "Backend",
-    items: [
-      { name: "Node.js", icon: Server, projects: "API de Autenticação" },
-      { name: "Spring Boot", icon: Server, projects: "Sistema de Reservas" },
-      { name: "APIs REST", icon: Server, projects: "Múltiplos projetos" },
-      { name: "LangChain", icon: Server, projects: "Chatbot IA" },
-    ]
+  { 
+    id: "javascript",
+    name: "JavaScript/TS", 
+    icon: SiJavascript, 
+    projects: "E-Commerce, Dashboard, Acessa, Charge", 
+    description: "Essencial para o desenvolvimento frontend e backend. Gosto de usar TypeScript para garantir tipagem estática e maior confiabilidade." 
   },
-  {
-    title: "Mobile",
-    items: [
-      { name: "React Native", icon: Smartphone, projects: "App de Finanças" },
-      { name: "Expo", icon: Smartphone, projects: "App de Finanças" },
-    ]
+  { 
+    id: "react",
+    name: "React & Native", 
+    icon: FaReact, 
+    projects: "E-Commerce, Dashboard, App Finanças, Acessa", 
+    description: "Biblioteca frontend que mais utilizo para criar interfaces dinâmicas, responsivas e aplicativos mobile nativos." 
   },
-  {
-    title: "Banco de Dados",
-    items: [
-      { name: "MySQL", icon: Database, projects: "Sistema de Reservas" },
-      { name: "Firebase", icon: Database, projects: "App de Finanças" },
-    ]
-  },
-  {
-    title: "Ferramentas",
-    items: [
-      { name: "Git", icon: Wrench },
-      { name: "GitHub", icon: Wrench },
-      { name: "VS Code", icon: Wrench },
-      { name: "IntelliJ IDEA", icon: Wrench },
-      { name: "GitHub Codespaces", icon: Wrench },
-    ]
+  { 
+    id: "sql",
+    name: "SQL", 
+    icon: BiCoinStack, 
+    projects: "Consultas, Migrações, Sistema de Reservas", 
+    description: "Fundamental para modelagem de dados relacionais, otimização de consultas e manutenção de integridade nas informações." 
   }
 ];
 
+const otherTools = [
+  { name: "Next.js", icon: SiNextdotjs },
+  { name: "Node.js", icon: FaNodeJs },
+  { name: "Spring Boot", icon: SiSpringboot },
+  { name: "HTML5", icon: FaHtml5 },
+  { name: "CSS3", icon: FaCss3Alt },
+  { name: "MySQL", icon: SiMysql },
+  { name: "Firebase", icon: SiFirebase },
+  { name: "Git", icon: FaGitAlt },
+  { name: "GitHub", icon: FaGithub }
+];
+
 export function Tech() {
-  // Coletar as tecnologias principais
-  const mainTechs = techCategories
-    .flatMap((cat) => cat.items)
-    .filter((tech) => tech.isMain);
+  const [selectedTech, setSelectedTech] = useState<string>(mainTechs[0].id);
+
+  const activeTech = mainTechs.find(t => t.id === selectedTech);
 
   return (
     <section id="tech" className="py-24 relative bg-background">
-      <div className="container mx-auto px-4 md:px-6">
+      {/* Subtle Grid Background */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -92,74 +107,100 @@ export function Tech() {
           </p>
         </motion.div>
 
-        {/* Principais Tecnologias (Destaque) */}
-        <div className="max-w-6xl mx-auto mb-20">
-          <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
+        {/* Principais Tecnologias (Interativas) */}
+        <div className="max-w-5xl mx-auto mb-20">
+          <h3 className="text-xl font-bold text-foreground mb-8 flex items-center justify-center gap-2">
             <Star size={20} className="text-foreground fill-foreground" />
             Principais Tecnologias
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {mainTechs.map((tech, i) => (
-              <motion.div
-                key={tech.name}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
-                whileHover={{ y: -6, scale: 1.02 }}
-                className="bg-foreground text-background p-6 rounded-2xl flex flex-col items-center justify-center text-center shadow-lg shadow-black/10 cursor-default"
-              >
-                <tech.icon size={32} strokeWidth={1.5} className="mb-4 opacity-90" />
-                <span className="font-bold text-lg tracking-tight">{tech.name}</span>
-                {tech.projects && (
-                  <span className="text-xs text-background/70 mt-2 font-medium line-clamp-2">
-                    {tech.projects}
+          
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4 mb-8">
+            {mainTechs.map((tech) => {
+              const isSelected = selectedTech === tech.id;
+              const Icon = tech.icon;
+              return (
+                <button
+                  key={tech.id}
+                  onClick={() => setSelectedTech(tech.id)}
+                  className={`relative p-4 md:p-6 rounded-2xl flex flex-col items-center justify-center text-center transition-all duration-300 border 
+                    ${isSelected 
+                      ? "bg-foreground text-background shadow-lg shadow-black/10 border-foreground scale-[1.02]" 
+                      : "bg-white text-foreground hover:bg-black/5 border-black/5 hover:border-black/15"
+                    }`}
+                >
+                  <Icon size={32} className={`mb-3 ${isSelected ? 'opacity-100' : 'opacity-70'}`} />
+                  <span className={`font-bold text-sm md:text-base tracking-tight ${isSelected ? '' : 'text-foreground/80'}`}>
+                    {tech.name}
                   </span>
-                )}
+                  
+                  {/* Arrow Indicator for selected */}
+                  {isSelected && (
+                    <motion.div 
+                      layoutId="active-indicator"
+                      className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-foreground"
+                    />
+                  )}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Área de Detalhes da Tecnologia Selecionada */}
+          <AnimatePresence mode="wait">
+            {activeTech && (
+              <motion.div
+                key={activeTech.id}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+                className="bg-white rounded-3xl p-8 border border-black/5 shadow-sm relative overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 p-8 opacity-[0.03] pointer-events-none">
+                  <activeTech.icon size={160} />
+                </div>
+                
+                <div className="relative z-10 max-w-3xl">
+                  <h4 className="text-2xl font-bold mb-4 text-foreground flex items-center gap-3">
+                    <activeTech.icon size={28} />
+                    {activeTech.name}
+                  </h4>
+                  <p className="text-foreground/70 text-lg leading-relaxed font-light mb-6">
+                    {activeTech.description}
+                  </p>
+                  
+                  <div className="bg-card p-5 rounded-xl border border-black/5 inline-block">
+                    <span className="block text-xs font-bold uppercase tracking-wider text-foreground/50 mb-2">Projetos Relacionados</span>
+                    <span className="font-medium text-foreground/90">{activeTech.projects}</span>
+                  </div>
+                </div>
               </motion.div>
-            ))}
+            )}
+          </AnimatePresence>
+        </div>
+
+        {/* Outras Ferramentas */}
+        <div className="max-w-5xl mx-auto">
+          <h3 className="text-xl font-bold text-foreground mb-8 flex items-center justify-center gap-2">
+            <Wrench size={20} className="text-foreground" />
+            Outras Ferramentas e Tecnologias
+          </h3>
+          <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+            {otherTools.map((tool) => {
+              const Icon = tool.icon;
+              return (
+                <div 
+                  key={tool.name}
+                  className="flex items-center gap-2.5 px-4 py-2.5 bg-white rounded-xl border border-black/5 shadow-sm"
+                >
+                  <Icon size={18} className="text-foreground/70" />
+                  <span className="text-sm font-medium text-foreground/80">{tool.name}</span>
+                </div>
+              )
+            })}
           </div>
         </div>
 
-        {/* Grade de Categorias */}
-        <div className="grid md:grid-cols-2 gap-x-8 gap-y-12 max-w-6xl mx-auto">
-          {techCategories.map((category, catIndex) => (
-            <motion.div
-              key={category.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: catIndex * 0.1, duration: 0.5 }}
-            >
-              <h3 className="text-lg font-bold mb-6 text-foreground/80 tracking-wide uppercase text-sm border-b border-black/5 pb-2">
-                {category.title}
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {category.items.map((tech) => (
-                  <motion.div
-                    key={tech.name}
-                    whileHover={{ scale: 1.03 }}
-                    className="group bg-white p-4 rounded-xl border border-black/5 hover:border-black/20 hover:shadow-md flex flex-col cursor-default"
-                  >
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="p-2 bg-card rounded-lg text-foreground group-hover:bg-foreground group-hover:text-background transition-colors duration-300">
-                        <tech.icon size={18} />
-                      </div>
-                      <span className="font-semibold text-foreground text-sm">
-                        {tech.name}
-                      </span>
-                    </div>
-                    {tech.projects && (
-                      <div className="text-xs text-foreground/50 font-medium pl-11 group-hover:text-foreground/70 transition-colors duration-300 line-clamp-1">
-                        {tech.projects}
-                      </div>
-                    )}
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </div>
       </div>
     </section>
   );
