@@ -20,7 +20,7 @@ type Certificate = {
   progress?: number;
 };
 
-const certCategories = ["Todos", "Programação", "IA", "Cloud", "Design"];
+const certCategories = ["Todos", "Programação", "IA", "Cloud", "Design", "Outros"];
 
 const certificates: Certificate[] = [
   {
@@ -70,6 +70,18 @@ const certificates: Certificate[] = [
     file: "/cert-ia.pdf",
     status: "in_progress",
     progress: 23
+  },
+  {
+    id: "5",
+    title: "Introdução ao Excel",
+    issuer: "Enap",
+    date: "2026",
+    hours: 25,
+    category: "Outros",
+    image: "/assets/curso_introducao_excel.png",
+    link: "#",
+    file: "/assets/introducao_ao_excel_turma_jul2026_certificado.pdf",
+    status: "completed"
   }
 ];
 

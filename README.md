@@ -1,8 +1,8 @@
-# Meu Portfólio Pessoal 🚀
+# Meu Portfólio Pessoal 
 
 Este é o meu portfólio pessoal, construído para demonstrar minhas habilidades, projetos, trajetória acadêmica e certificações na área de Tecnologia da Informação. O design possui uma estética **Minimalista Premium**, com foco em clean design (preto e branco), espaçamento e micro-interações elegantes.
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 O projeto foi desenvolvido utilizando as seguintes ferramentas modernas do ecossistema front-end:
 
@@ -13,7 +13,7 @@ O projeto foi desenvolvido utilizando as seguintes ferramentas modernas do ecoss
 - **[Lucide React](https://lucide.dev/)** - Ícones
 - **Integração com a API do GitHub** - Para exibição do perfil e projetos dinamicamente
 
-## 🌟 Funcionalidades
+## Funcionalidades
 
 - **Responsividade total:** Funciona perfeitamente em dispositivos móveis, tablets e desktops.
 - **Animações fluidas:** Efeitos de hover sofisticados e transições macias via Framer Motion.
@@ -21,7 +21,7 @@ O projeto foi desenvolvido utilizando as seguintes ferramentas modernas do ecoss
 - **Sistema de Filtro:** Para galerias de Projetos e Certificações.
 - **Performance Optimizada:** Utilizando os melhores recursos de otimização de imagem e fontes do Next.js.
 
-## 🚀 Como rodar localmente
+## Como rodar localmente
 
 Siga os passos abaixo para rodar o projeto na sua máquina:
 
@@ -47,7 +47,7 @@ npm run dev
 
 5. Abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver o resultado!
 
-## 📝 Como personalizar os dados
+## Como personalizar os dados
 
 Os dados do site estão estruturados diretamente nos componentes para facilitar a manutenção. Se você quiser usar este portfólio como base:
 

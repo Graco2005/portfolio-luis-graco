@@ -44,8 +44,9 @@ const projectsData: Project[] = [
     category: ["IA"],
     description: "Assistente virtual integrado com OpenAI para responder dúvidas frequentes de clientes.",
     techs: ["Python", "LangChain", "OpenAI"],
-    github: "#",
-    live: "#"
+    github: "https://github.com/Graco2005/chatbot-atendimento",
+    live: "#",
+    images: ["/assets/chatbot_atendimento_img1.jpg", "/assets/chatbot_atendimento_img2.png"]
   },
   {
     id: 4,
