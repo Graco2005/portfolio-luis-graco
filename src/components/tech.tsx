@@ -11,7 +11,8 @@ import {
   FaHtml5,
   FaCss3Alt,
   FaGitAlt,
-  FaGithub
+  FaGithub,
+  FaLinux
 } from "react-icons/fa";
 import { 
   SiJavascript, 
@@ -79,7 +80,8 @@ const otherTools = [
   { name: "MySQL", icon: SiMysql },
   { name: "Firebase", icon: SiFirebase },
   { name: "Git", icon: FaGitAlt },
-  { name: "GitHub", icon: FaGithub }
+  { name: "GitHub", icon: FaGithub },
+  { name: "Linux", icon: FaLinux }
 ];
 
 export function Tech() {
